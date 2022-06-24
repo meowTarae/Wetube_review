@@ -10,6 +10,9 @@
     "JS",
     "DB"
   ],
+  "scripts": {
+    "dev": "nodemon --exec babel-node index.js"
+  },
   "author": "Tarae",
   "license": "ISC",
   "bugs": {
@@ -18,5 +21,11 @@
   "homepage": "https://github.com/meowTarae/Wetube_review#readme",
   "dependencies": {
     "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/node": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "nodemon": "^2.0.18"
   }
 }

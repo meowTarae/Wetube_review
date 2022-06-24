@@ -1,0 +1,23 @@
+NodeJS : 크롬 V8 JS엔진으로 빌드된 JS Runtime, 브라우저 밖에서 돌아가는 JS
+         옛날엔 브라우저 안에서 코딩 해야했는데, 이젠 vsc 안에서도 할 수 있당
+
+npm : JS를 위한 패키지 매니저
+      nodeJS와 상호작용 할 수 있게 해줌  
+
+express : NodeJS를 위한 웹 프레임 워크 (= middleWare).
+
+json : 프로그래머가 파일에 정보를 저장하기 위해 만든 방식 
+
+package.json : 프로젝트와 관련된 정보를 저장
+               dependencies는  프로젝트에 동작시킬때 필요한 모듈들 정보가 있음
+
+Babel.js : JS 컴파일러. NodeJS가 이해하지 못하는 JS 코드를 번역해줌.
+
+devDependencies : 개발자에게만 필요한 디펜던시
+                  자동차로 비유하자면, 디펜던시는 차를 굴러가게 하는 가솔린, 디젤
+                  dev디펜던시는 방향제, 카시트 같은 느낌
+
+Babel - preset : 최신 js 코드를 위한 플러그인
+
+nodemon : 내가 만든 파일이 수정되는걸 감시해주는 패키지
+          파일이 수정되면 자동으로 재시작 해줌.
