@@ -11,7 +11,7 @@
     "DB"
   ],
   "scripts": {
-    "dev": "nodemon --exec babel-node index.js"
+    "dev": "nodemon --exec babel-node src/server.js"
   },
   "author": "Tarae",
   "license": "ISC",
