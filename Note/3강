@@ -1,0 +1,7 @@
+서버란?
+    항상 켜져있는 컴퓨터같은
+    유저의 request를 listening하고 response를 해줌
+        ex) 유저가 naver.com을 입력한다, 동영상 재생 버튼을 클릭한다.
+
+callback?
+    기본적으로 서버가 시작될떄 작동하는 함수
