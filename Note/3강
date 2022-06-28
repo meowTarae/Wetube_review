@@ -1,7 +1,23 @@
-서버란?
+1. 서버란?
     항상 켜져있는 컴퓨터같은
     유저의 request를 listening하고 response를 해줌
         ex) 유저가 naver.com을 입력한다, 동영상 재생 버튼을 클릭한다.
 
-callback?
+2. callback?
     기본적으로 서버가 시작될떄 작동하는 함수
+
+3.
+    page "/" << repond
+유저 <-> 브라우저 <-> 서버
+    get "/" >> request
+
+
+4. 기본적으로 
+app.addEventListener("click", () );
+같이 JS는 조건, 함수 가 들어가야함.
+
+
+5. 유저가 "/login" 페이지를 get 요청한다면
+express는 요청한 함수에 req, res를 인자로 넣어줌
+해당 함수는 이 인자들을 활용할 수 있음
+
