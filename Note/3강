@@ -21,3 +21,20 @@ app.addEventListener("click", () );
 express는 요청한 함수에 req, res를 인자로 넣어줌
 해당 함수는 이 인자들을 활용할 수 있음
 
+
+6. middleware
+    cont myMiddleware = (req, res, next) => {
+        console.log("hi");
+        next();
+    };
+
+    const controllerHome = (req, res) => {
+        ; next는 생략 가능하다.
+        console.log("hi");
+        return res.end();
+    };
+
+    app.get("/", myMiddleware, controllerHome);
+
+
+    위 코드처럼 중간에 경유할 수 있는 컨트롤러가 middleware이다.
