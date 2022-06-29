@@ -1,13 +1,26 @@
 import express from "express";
+import morgan from "morgan";
 
 const PORT = 4000;
 
 const app = express(); //  create express application
+const logger = morgan("dev");
 
 const handleHome = (req, res) => {
+  console.log(`Method : ${req.method}, URL : ${req.url}`);
   return res.end("<h1>Homepage</h1>");
 };
 
+const protectController = (req, res, next) => {
+  const URL = req.url;
+  if (URL === "/protect") {
+    return res.send("<h1>You can't access this page.</h1>");
+  }
+  next();
+};
+
+app.use(logger);
+app.use(protectController);
 app.get("/", handleHome);
 
 const handleListening = () =>

@@ -37,4 +37,24 @@ express는 요청한 함수에 req, res를 인자로 넣어줌
     app.get("/", myMiddleware, controllerHome);
 
 
-    위 코드처럼 중간에 경유할 수 있는 컨트롤러가 middleware이다.
+    위 코드처럼 중간에 경유할 수 있는 컨트롤러이며, 
+    next() 를 포함해야 middleware임.
+
+
+7. globalMiddleware
+    use()를 사용하여 적용할 수 있다.
+
+    app.use(myMiddleware);
+    위 코드 아래로 작성되는 코드들은 myMiddleware를 경유하여 실행되기에 전역 middleware라 불림
+
+
+8. req
+    req.url = /, /protected, ...
+    req.method = GET, POST...
+
+
+9. morgan
+    middleware 중 하나이다.
+    req의 정보를 console에 출력해준다.
+    const logger = morgan("dev");
+    보통 위와같이 사용되며, dev 이외에도 여러 옵션들을 넣을 수 있다.
