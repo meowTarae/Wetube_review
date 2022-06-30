@@ -1,0 +1,43 @@
+1. 라우터    
+    /users/edit
+    /users/delete
+    처럼 ' / '를 계속 사용해서 URL을 이어나가게 해줌
+
+
+2. 사용 방법
+    1. 이전까지 사용하던 방법 )
+        const catController = (req, res) => ~~~;
+        app.get("/tarae", catController);
+        
+
+    2. 라우터를 사용 )
+        const catRouter = express.Router();
+        app.use("/tarae", catRouter);
+
+    1은 정확히 /tarae 만 걸릴거고,
+    2는 /tarae/grooming, /tarae/churr.. 다 걸릴 것이다.
+
+
+    get 할때는
+        catRouter.get("/churr", gansikController);
+        ; Router.get을 사용해야 함.
+        ; 그래야 churr 앞에 /tarae가 적용되고 있음을 알 수 있기에.
+
+    
+    작동 순서
+        express() (= app) 에서 주소를 입력할 때, /tarae가 들어있으면
+        use() 에 걸려서 express.Router()(= catRouter) 로 이동하게 됨.
+        /tarae/churr에 해당되는게 있다면 get이 잡아채겠지
+
+        추가하려면
+        const gansikBrandController = express.Router();
+        catRouter.use("/churr", gansikBrandController);
+
+        gansikBrandController.get("/chaoChurr", printGansikBrandName);
+
+        const printGansikBrandName = (req, res) => ~~~;
+
+        이렇게 되겠지 ㅇㅇ.
+
+
+3.
