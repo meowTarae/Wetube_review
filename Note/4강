@@ -60,5 +60,47 @@
             but, 여러 함수를 받아들일땐 반드시 함수명을 있는 그대로.
             여러개의 함수를 받아들이는 행위이기때문에 이름을 맞춰 써야됨.
     
-4. 
+4. /:id
+    parameter 이다.
+    해당 id값은 console.log( req.params ) 로 얻을 수 있음.
 
+    :id 말고 :potato 같은거 해도 됨 ㅇㅇ
+    이거 쓸땐 함수 선언 위치 생각하자. 
+    뭐든 받아들일 수 있으니 지정 url 밑에 위치하게끔.
+    
+    근데 코드가 한두줄도 아니고, 매번 코드 위치를 옮기기는 힘들거임 ㅇㅇ 
+    아래 5번이 해결책임.
+
+
+5. parameter regular expression 
+    (인자 정규 표현식)
+
+    /ab*cd  -> ab~~cd
+    /ab+cd  -> abbbbbcd, abbcd
+    /ab?cd  -> acd, abcd
+    /(ab)?cd  -> cd, abcd
+    /(tarae\w+) -> taraeChurr, taraeMeow
+        특수기호 사용을 위해 \를 사용.
+        'w'는 아무 단어 를 뜻함.
+        + 를 사용해서 \w가 계속 지속되게끔.
+    
+        Q. 근데 /(tarae*) 하면 되는거 아닌감?
+        A. 맞는데, \d 처럼 숫자만 받을 경우도 있으니껜 ㅇㅇ
+
+    /(\d+)
+        'd'는 digit, 숫자만 잡아주는 역할.
+
+    # JS에서 특수기호 쓸떈 \ 한개 더 붙여줘야됨.
+        ex) /tarae(\\d+);
+
+    
+    사용 예시
+        taraeController.get("/:id(\\d+)");
+            -> id라는 params는 digit만 받아들인다는 뜻
+    
+    또한
+        taraeController.get("/(\\d+)"); 처럼 :id 빼도 실행은 잘됨
+        :id는 닉네임임.
+        나중에 req.params.id or req.params.potato 처럼 호출을 위해 붙이는 것.
+
+        
