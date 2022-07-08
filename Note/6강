@@ -1,4 +1,4 @@
-<!-- 
+<!-- <!-- 
 1.  
     a(href="/edit")     
         => 내 위치와는 관계없이 root/edit 로 이동
@@ -43,4 +43,26 @@
     app.use(express.urlencoded({ extended: true })); 를 추가.
     
     => req.body (= html로부터의 input-value) 값을 url에 인코딩해서 가져올 수 있게 해줌.
- -->
+ 
+
+
+7. mongo DB
+    document-based (문서 기반)
+    일반적인 db는 sql 베이스, 행 기반이다.
+
+    mongo에서 저장하는 데이터는 JSON-like-document이다.
+    따라서 행으로 된 데이터를 저장할 필요 X
+
+
+8. mongoose
+    node.js와 mongoDB를 이어주는 역할
+    (우리가 작성한 js를 db로 보내줌)
+
+
+9. mongoDB 사용 방법
+
+    mongod: MongoDB 시스템의 기본 데몬 프로세서 (서버와 같은 느낌) 
+    // mongo demon
+    mongo: MongoDB에 대한 쉘 인터페이스 (클라이언트 같은 느낌)
+
+    즉 mongod로 서버를 키고 -> mongo로 인터페이스를 실행하여 mongoDB와 소통한다 -->
