@@ -1,4 +1,4 @@
-<!-- <!-- 
+<!-- 
 1.  
     a(href="/edit")     
         => 내 위치와는 관계없이 root/edit 로 이동
@@ -87,7 +87,18 @@
                     "#hi",
                     "#mongo",
                 ]
-    
+                == hashtags: hashtags.split(",").map((w) => w);
+
+
     이를 통해 db는 모델을 구축할 수 있음.
         const movieModel = mongoose.model("Video", videoSchema);
                                         // 모델명, schema 
+
+
+12. 
+    mongoose query는 2가지 중 하나로 사용될 수 있음
+        1. callback
+            무언가가 발생하고 난 후 호출되는 함수
+                ex) 마우스 클릭 이벤트가 발생한다던가..
+            
+        2. promise
