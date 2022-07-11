@@ -175,3 +175,30 @@
     아싸리 create()로 모델 자체를 선언과 동시에 db로 보낼 수 있음.
     create()를 사용하면 save() 안해도 된다 ㅇㅇ
 
+
+14. documentation
+
+    [0-9a-f]{24}
+        >> 16진수의 24글자 를 뜻함.
+
+    // regexpal.com에 들어가면 위의 regular expression 공부를 할 수 있덩
+
+
+15. model.funcs()
+
+    model.exists({ _id: id });
+        >> _id는 mongo db에서 db.modelName.find() 했을때 id 명칭을 "_id"라 해놨더라구
+
+    model.findById(id);
+        >> id는 req.body.id 임 ㅇㅇ
+
+    model.findByIdAndUpdate(id, { 
+        수정할 것, 
+        title, 
+        hashtags: hashtags.split(",").map((w) => (w.startsWith("#") ? w : `#${word}`)),
+    })
+
+    etc...
+
+
+16. 
