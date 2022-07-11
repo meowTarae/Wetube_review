@@ -201,4 +201,16 @@
     etc...
 
 
-16. 
+16. middleWare
+
+    model들에게 middleWare를 적용시켜서 몇몇 설정을 걸고자 한다.
+        주의! model이 생성되기 전에 만들어야만 한다.
+
+        ex) 
+            videoSchema.pre("save", async function () {
+                this.title = "hahaha";
+            });
+
+            schema.pre로 middleWare임을 선언
+            ("~~"에는 원하는 이벤트를 설정, 적용시킬 함수를 작성);
+
