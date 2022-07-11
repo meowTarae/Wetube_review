@@ -102,3 +102,76 @@
                 ex) 마우스 클릭 이벤트가 발생한다던가..
             
         2. promise
+            callback의 최신 버전 느낌?
+            async / await 이다.
+            
+            기존 JS는 기다리는 기능이 없다. 
+
+            코드를 위에서 아래로 읽다보면
+            DB 건드리는 어떤 코드의 경우, 시간이 오래걸려
+            해당 코드보다 아래줄의 코드가 먼저 실행되는 경우가 있다.
+            이는 작업별로 시간이 달라 프로그램을 꼬이게 할 수 있음. 
+
+            좀 오래걸리는 코드를 기다린 후, 다음 코드를 진행하는게 좋다고 판단.
+            await를 DB 코드에 걸어두면 에러 없이 프로그램이 잘 실행될 수 있다.
+
+
+            사용법 )
+                1. 기존 callback 방식 )
+                    const home = (req, res) => {
+                        log("start");
+                        Video.find({}, (err, video)) => {
+                        ; Video는 schema,   video는 docs,
+                            if (err) 
+                                log("errr~~");
+                            return res.render("/tarea", { tarae });
+                            log("doing");
+                        }
+                        log("finisg");
+                    }
+                    위 코드는 start, doing, finish 순서가 아닌,
+                             start, finish, doing 순서로 실행될 수 있다.
+
+
+                2. async / await 사용시 )
+                    const home = async (req, res) => {
+                        log("start");
+                        const videos = await Video.find({});
+                        return res.render("/tarea", { tarae });
+                        log("finisg");
+                    }
+
+                    위 코드는 순서대로 잘 진행됨 ㅇㅇ.
+                    유의사항은, 시간이 좀 걸릴거같은 놈에게 await 걸어주기.
+                    최고 외각 함수에게 (= home) async 걸어주기.
+
+                    만약 err를 사용해야한다면 try / catch 문을 사용하자.
+                        
+
+
+13. 
+    schmea를 만들고, pug 페이지에서 유저가 form-input에 값을 입력한다면
+    우리는 해당 데이터를 controller에서 post func에서 관리할 수 있지 ㅇㅇ
+    req.body로 부터 말이야.
+
+    그리고 model을 정의하지.
+    const video = new Video({
+                    // schema 정의한 파일에서 수입한 변수임.
+        title,
+        ...
+    })
+
+    이제는 이렇게 '완성된' 모델을 DB에 전송할 차례임 !
+    이를 위해
+    
+    video.save();
+    이를 통해 documents가 db에 저장됨! 와우!
+    
+    save는 promise를 리턴받음. 
+        >> save가 끝날때까지 기다려줘야함 == await를 꼭 붙여주세요
+
+
+    위는 model을 따로 만들어놨을때 save()로 db에 보내는 방법이고
+    아싸리 create()로 모델 자체를 선언과 동시에 db로 보낼 수 있음.
+    create()를 사용하면 save() 안해도 된다 ㅇㅇ
+
