@@ -214,3 +214,52 @@
             schema.pre로 middleWare임을 선언
             ("~~"에는 원하는 이벤트를 설정, 적용시킬 함수를 작성);
 
+
+17. static
+
+    ; 위 middleWare를 사용한 방법도 좋지만,
+    ; edit 페이지에 들어가서 hashtags 수정하려면 위 코드를 사용할 수 없다.
+    ; 그렇기에 또 컨트롤러 함수를 만들어야하니, 이러지 말고 static을 사용해보자.
+    ; 또한 findByIdAndUpdate 에서는 save hook을 사용할 수 없대
+
+    videoSchema.static("formatHashtags", function (hashtags) {
+        return hashtags.split(",").map((w)=>w.startsWith("#")?w:`#${w}`);
+    });
+
+    이렇게하면 box.addEvenetListener() 함수 처럼
+    Video.formatHashtags() 라는 함수를 만든 것이다.
+
+    이는 작성한 js 파일만 import 해놓으면 사용 가능하다.
+
+
+18. sort
+    
+    db에 있는 영상들을 조건에 따라 정렬하고싶어.
+    controller에서 home.pug를 렌더링 해주는 함수로 가자.
+    우리는 Video 모델을 데이터로써 넘겨주는데, 이때
+        await Video.find({}).sort({ createdAt: "asc or desc" });
+    createdAt은 DB에 있는 schema임. desc면 내림차순, asc면 오름차순 ㅇㅇ
+
+
+19. 
+    라우터로 지정한 :id -> req.params
+    pug파일에서 input으로 받은 내용 -> req.body(form이 POST일 때)
+    pug파일에서 input으로 받은 url내용 -> req.query (form이 GET일 때)
+        ; req.query is for the URL data.
+
+
+20.
+    videos = await Video.find({
+      title: {
+        $regex: new RegExp(keyword, "i"),
+            // regular expression, keyword를 포함한 제목을 찾아줌.
+            // "i"는 대소문자 구분 X 라는 의미
+        $regex: new RegExp(`^${keyword}`, "i"),
+            // ^ keyword 는 keyword로 시작하는 제목을 찾아줌
+        $regex: new RegExp(`${keyword}$`, "i"),
+            // keyword $ 는 keyword로 끝나는 제목을 찾아줌 
+      },
+    });
+
+
+21. async / await 언제 쓰는지 controller 코드 보면서 확실히 익혀놓읍시다.
