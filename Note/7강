@@ -1,11 +1,15 @@
+import { compare } from "bcrypt"
+
 1. hash
 
-    Determinic func 
-    
+    Determinic func (결정적 함수)
+    또한, 단방향 함수이다.
+
     npm i bcrypto
+    // 참고: npmjs.com/package/bcrypt
     
     bcrypt.hash(password, saltRounds);
-
+                        // 몇 번 해싱할지
 
 2. $or
 
@@ -15,4 +19,31 @@
         유용하게 사용 될 경우가 많아 보이니 익혀두자.
 
 
-3. 
+3. status code
+    // 참고: https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C
+    // 참고: https://expressjs.com/ko/api.html#res.status
+    
+    404: 요청한 페이지가 없을 때
+    302: ..
+    200: 서버가 요청을 제대로 처리했다.
+    505: ..
+    etc..
+
+    status code 사용법
+        res.render("/~~") 에서
+        res.status(400).render("/~~") 처럼 끼워넣어주면 됨.
+        
+
+4. 
+    유저가 로그인 할 때
+    입력한 password 값을 해싱 후, db 값과 비교하면 되긴 함.
+
+    bcrypt는 위를 지원해줌 compare() 로.
+        const match = 
+            await bcrypt.compare(a, b);
+                a: user password
+                b: DB password
+    
+    compare() 사용 시, saltRounds 값을 넣을 필요 X.
+    왜냐면 해쉬된 값 맨 앞에보면 saltRounds 값이 있음 ㅋㅋ
+
