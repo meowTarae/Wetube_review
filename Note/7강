@@ -18,6 +18,7 @@ import { compare } from "bcrypt"
         
         유용하게 사용 될 경우가 많아 보이니 익혀두자.
 
+    // 참고 : https://www.mongodb.com/docs/manual/reference/operator/query/or/#mongodb-query-op.-or
 
 3. status code
     // 참고: https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C

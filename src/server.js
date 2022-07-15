@@ -21,7 +21,7 @@ app.use(
 );
 app.use((req, res, next) => {
   res.locals.url = req.url;
-
+  res.locals.loggedIn = Boolean(req.session.loggeedIn);
   req.sessionStore.all((error, sessions) => {
     console.log(sessions);
     next();

@@ -34,6 +34,7 @@ export const postJoin = async (req, res) => {
     });
   }
 };
+
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 
@@ -55,6 +56,7 @@ export const postLogin = async (req, res) => {
     });
   }
   req.session.loggedIn = true;
+  console.log("Is it work?");
   req.session.user = user;
   return res.redirect("/");
 };
