@@ -47,3 +47,35 @@ import { compare } from "bcrypt"
     compare() 사용 시, saltRounds 값을 넣을 필요 X.
     왜냐면 해쉬된 값 맨 앞에보면 saltRounds 값이 있음 ㅋㅋ
 
+
+5.
+    세션 : 브라우저와 백엔드 사이의 memory, history
+
+    1. 브라우저가 서버에 접근
+    2. 서버는 브라우저에게 Cookie를 준다.
+    3. 브라우저가 다시 서버에 접근할 시 2. 에서 받은 Cookie를 준다.
+    4. 서버는 Cookie를 통해 브라우저를 구분.
+
+
+    세션 : 서버측에서 제공해주는 데이터. 
+    쿠키 : 클라이언트측에서 저장하고 사용하는 데이터
+
+
+    db에 연동되지 않은 세션은 메모리에 저장됨
+        >> C c로 서버 닫으면 다 날아감
+    
+
+    login 할 때, 
+        req.session.loggedIn = true;
+        req.session.user = ~~~;
+    걸어줄 수 있음.
+
+
+6. local
+
+    express 와 pug 는 같은 local을 공유 
+        ( pug를 express의 view engine으로 설정 했기때문)
+    때문에 pug template에서 res.local 사용 가능
+
+
+
