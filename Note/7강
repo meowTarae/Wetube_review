@@ -156,5 +156,3 @@ import { compare } from "bcrypt"
         2.때문에 중간에 .json 함수가 response의 스트림을 가져와 끝까지 읽고, res.body의 텍스트를 promise의 형태로 반환한다.
 
         3. 다른 서버에서 데이터를 object 형식으로 받아온다
-
-    3) 
