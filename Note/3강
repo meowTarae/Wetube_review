@@ -1,53 +1,53 @@
-// 1. 서버란?
-//     항상 켜져있는 컴퓨터같은
-//     유저의 request를 listening하고 response를 해줌
-//         ex) 유저가 naver.com을 입력한다, 동영상 재생 버튼을 클릭한다.
+1. 서버란?
+    항상 켜져있는 컴퓨터같은
+    유저의 request를 listening하고 response를 해줌
+        ex) 유저가 naver.com을 입력한다, 동영상 재생 버튼을 클릭한다.
 
-// 2. callback?
-//     기본적으로 서버가 시작될떄 작동하는 함수
+2. callback?
+    기본적으로 서버가 시작될떄 작동하는 함수
 
-// 3.
-//     page "/" << repond
-// 유저 <-> 브라우저 <-> 서버
-//     get "/" >> request
+3.
+    page "/" << respond
+유저 <-> 브라우저 <-> 서버
+    get "/" >> request
 
-// 4. 기본적으로
-// app.addEventListener("click", () );
-// 같이 JS는 조건, 함수 가 들어가야함.
+4. 기본적으로
+    app.addEventListener("click", () );
+    같이 JS는 조건, 함수 가 들어가야함.
 
-// 5. 유저가 "/login" 페이지를 get 요청한다면
-// express는 요청한 함수에 req, res를 인자로 넣어줌
-// 해당 함수는 이 인자들을 활용할 수 있음
+5. 유저가 "/login" 페이지를 get 요청한다면
+    express는 요청한 함수에 req, res를 인자로 넣어줌
+    해당 함수는 이 인자들을 활용할 수 있음
 
-// 6. middleware
-//     cont myMiddleware = (req, res, next) => {
-//         console.log("hi");
-//         next();
-//     };
+6. middleware
+    cont myMiddleware = (req, res, next) => {
+        console.log("hi");
+        next();
+    };
 
-//     const controllerHome = (req, res) => {
-//         ; next는 생략 가능하다.
-//         console.log("hi");
-//         return res.end();
-//     };
+    const controllerHome = (req, res) => {
+        ; next는 생략 가능하다.
+        console.log("hi");
+        return res.end();
+    };
 
-//     app.get("/", myMiddleware, controllerHome);
+    app.get("/", myMiddleware, controllerHome);
 
-//     위 코드처럼 중간에 경유할 수 있는 컨트롤러이며,
-//     next() 를 포함해야 middleware임.
+    위 코드처럼 중간에 경유할 수 있는 컨트롤러이며,
+    next() 를 포함해야 middleware임.
 
-// 7. globalMiddleware
-//     use()를 사용하여 적용할 수 있다.
+7. globalMiddleware
+    use()를 사용하여 적용할 수 있다.
 
-//     app.use(myMiddleware);
-//     위 코드 아래로 작성되는 코드들은 myMiddleware를 경유하여 실행되기에 전역 middleware라 불림
+    app.use(myMiddleware);
+    위 코드 아래로 작성되는 코드들은 myMiddleware를 경유하여 실행되기에 전역 middleware라 불림
 
-// 8. req
-//     req.url = /, /protected, ...
-//     req.method = GET, POST...
+8. req
+    req.url = /, /protected, ...
+    req.method = GET, POST...
 
-// 9. morgan
-//     middleware 중 하나이다.
-//     req의 정보를 console에 출력해준다.
-//     const logger = morgan("dev");
-//     보통 위와같이 사용되며, dev 이외에도 여러 옵션들을 넣을 수 있다.
+9. morgan
+    middleware 중 하나이다.
+    req의 정보를 console에 출력해준다.
+    const logger = morgan("dev");
+    보통 위와같이 사용되며, dev 이외에도 여러 옵션들을 넣을 수 있다.
