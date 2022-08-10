@@ -1,2 +1,37 @@
-1.
-  
+1. 값을 새로 갱신해야할 때
+
+    1)
+        const userData = await User.findByIdAndUpdate(
+            _id,
+            {
+              name,
+              email,
+              username,
+              location,
+            },
+        );
+        req.session.user ={
+            ...req.session.user,
+            // req.session.user에 들어있는 내용을 꺼내줌. 갱신 시 사용
+            name,
+            email,
+            username,
+            location,
+        };
+
+    2)
+        const updatedUser = await User.findByIdAndUpdate(
+            _id,
+            {
+              name,
+              email,
+              username,
+              location,
+            },
+            { new: true }
+            // new: true 옵션으로 새로운 값으로 갱신을 요청할 수 있다.
+        );
+        req.session.user = updatedUser;
+
+
+    

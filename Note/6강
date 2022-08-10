@@ -22,7 +22,7 @@
     cat.get("/churr", getChurr);
     cat.post("/churr", postChurr);
 
-    (shortCut) => cat.router("/churr").get(getChurr).post(postChurr);
+    (shortCut) => cat.route("/churr").get(getChurr).post(postChurr);
 
 
 5. 
