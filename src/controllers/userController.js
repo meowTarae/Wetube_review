@@ -2,6 +2,7 @@ import User from "../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
+
 export const postJoin = async (req, res) => {
   const { name, username, email, password, password2, location } = req.body;
   const pageTitle = "Join";
@@ -34,6 +35,7 @@ export const postJoin = async (req, res) => {
     });
   }
 };
+
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 export const postLogin = async (req, res) => {
@@ -142,6 +144,17 @@ export const postEdit = async (req, res) => {
     },
     body: { name, email, username, location },
   } = req;
+
+  const exists = await User.exists({
+    $or: [{ name }, { email }, { username }, { location }],
+  });
+
+  if (exists) {
+    res.render("edit-profile", {
+      pageTitle: "Edit Profile",
+      errorMessage: "중복",
+    });
+  }
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {

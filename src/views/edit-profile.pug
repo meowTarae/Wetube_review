@@ -30,4 +30,6 @@ block content
       required,
       value=loggedInUser.location
     )
+    if errorMessage
+      span= errorMessage
     input(type="submit", value="Update Profile")
