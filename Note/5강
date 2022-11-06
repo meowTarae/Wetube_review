@@ -78,3 +78,13 @@
 
         +videoMixin(potato)
         ; 호출은 ' + ' 기호로 한다. funcName(argument) 형태이다.
+
+
+6.  input
+        pug에서는
+            form
+                h1 #{pageTitle}!
+                input(type="text", value=`${ID}`)
+
+            #{}, ${} 둘 다 사용되기도 함.
+            input 내부 value에서는 #{}는 먹히지 않는다.
