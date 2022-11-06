@@ -15,7 +15,7 @@
 
     여기서 렌더링은 html로 입력받아 해석해서 표준 출력 장치(모니터)로 출력하는 것이다.
 
-2. heritence와 extends
+2. inheritence와 extends
     상속 할 기본 템플릿을 만들어서, 다른 pug 파일에 넘길 수 있음.
     layout 파일에는 상속할 코드를 작성하고
     상속받는 파일에서 추가할 내용은 block 으로 지정해둔다.
