@@ -86,5 +86,5 @@
                 h1 #{pageTitle}!
                 input(type="text", value=`${ID}`)
 
-            #{}, ${} 둘 다 사용되기도 함.
-            input 내부 value에서는 #{}는 먹히지 않는다.
+            #{} 은 variable과 text를 섞어쓰기위한, `` 안쓸때 쓰는 것
+            ${} 은 `` 안에 쓰는거

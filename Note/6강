@@ -14,7 +14,8 @@
 
 
 3. res.redirect()
-    브라우저가 자동으로 우리가 준 url 로 이동
+    해당 form의 method가 post 일 때,
+    브라우저가 자동으로 redirect(`url`) 로 이동
 
 
 4. 
@@ -22,7 +23,8 @@
     cat.get("/churr", getChurr);
     cat.post("/churr", postChurr);
 
-    (shortCut) => cat.route("/churr").get(getChurr).post(postChurr);
+    (shortCut) 
+        => cat.route("/churr").get(getChurr).post(postChurr);
 
 
 5. 
@@ -37,11 +39,16 @@
 
 
 6. form으로부터 정보를 얻을 때
-    express를 설정 해줘야함.
+    method: get 
+        => req.params 사용해서 정보를 얻을 수 있다.
+
+    method: post
+        => req.body를 사용하면 정보를 얻을 수 있는데, 에러난다.
+           왜냐면 express가 form의 body를 이해할 수 있게끔 설정 해줘야함.
     
     server.js에 
     app.use(express.urlencoded({ extended: true })); 를 추가.
-    
+
     => req.body (= html로부터의 input-value) 값을 url에 인코딩해서 가져올 수 있게 해줌.
  
 
