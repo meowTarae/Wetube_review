@@ -64,6 +64,11 @@
     node.js와 mongoDB를 이어주는 역할
     (우리가 작성한 js를 db로 보내줌)
 
+    사용 방법은
+        import mongoose from "mongoose";
+
+        mongoose.connect("mongodb://127.0.0.1:27017/`dbName`");
+        사용할 db 주소와 mongoose를 연결해주면 됨.
 
 9. mongoDB 사용 방법
 
@@ -79,22 +84,25 @@
 
 
 11. 
-    db에게 데이터 형식을 알려줘야 함.
-    타입스크립트처럼, tarae에는 meow가 있고 이건 string이야..
-        => schema
-            const videoSchema = new mongoose.Schema({
-                title: String,
-                    // 혹은 title: { type: String },
-                date: Date,
-                hashtags: [{ type: String }],
-            });
+    db에 값을 넣기 위해서 mongoose에게 값을 전달할 땐,
+    object를 model화 해서 넣어줘야 함.
+        == db에게 데이터 형식을 알려줘야 함.
+            타입스크립트처럼, tarae에는 meow가 있고 이건 string이야..
 
-                // hashtags 실 데이터
-                hastags: [
-                    "#hi",
-                    "#mongo",
-                ]
-                == hashtags: hashtags.split(",").map((w) => w);
+    => schema ( 개요, 도식 )
+    
+        const videoSchema = new mongoose.Schema({
+            title: String,
+            or title: { type: String },
+            date: Date,
+            hashtags: [{ type: String }],
+        });
+            // hashtags 실 데이터
+            hastags: [
+                "#hi",
+                "#mongo",
+            ]
+            == hashtags: hashtags.split(",").map((w) => w);
 
 
     이를 통해 db는 모델을 구축할 수 있음.
