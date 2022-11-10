@@ -193,10 +193,14 @@
 
 14. documentation
 
-    [0-9a-f]{24}
-        >> 16진수의 24글자 를 뜻함.
+        trim(): 좌우 여백 제거
+            ex) trim("  hello .   ") =>"hello ."
 
-    // regexpal.com에 들어가면 위의 regular expression 공부를 할 수 있덩
+
+        [0-9a-f]{24}
+            >> 16진수의 24글자 를 뜻함.
+
+        // regexpal.com에 들어가면 위의 regular expression 공부를 할 수 있덩
 
 
 15. model.funcs()
