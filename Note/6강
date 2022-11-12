@@ -282,7 +282,8 @@
 
 
 21. async / await 언제 쓰는지 controller 코드 보면서 확실히 익혀놓읍시다.
-    >> 보통 mongoose model.func() 쓸 때?
+    mongoDB에서 값을 가져올 때 등의
+    시간이 많이 소요될 때 사용
     
     
 22. 
