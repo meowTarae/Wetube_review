@@ -304,6 +304,10 @@
                 express().use(express.urlencoded({ extended:true }));
             코드를 넣어주면 된다.
 
+
+
+reges, static func 두개 좀 더 연습해보자.            
+
     
                 
             
