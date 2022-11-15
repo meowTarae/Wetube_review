@@ -1,5 +1,11 @@
 import { compare } from "bcrypt"
 
+Schema에 unique: true를 넣어서 db에 중복된 값이 들어가지 않게끔
+
+객체(Object)는 소프트웨어 세계에 구현할 대상이고, 
+이를 구현하기 위한 설계도가 클래스(Class)이며, 
+이 설계도에 따라 소프트웨어 세계에 구현된 실체가 인스턴스(Instance)이다. 
+
 1. hash
 
     Determinic func (결정적 함수)
