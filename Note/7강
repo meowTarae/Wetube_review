@@ -20,7 +20,7 @@ Schema에 unique: true를 넣어서 db에 중복된 값이 들어가지 않게�
 2. $or
 
     ex)
-        const exists = await User.exists( { $or: [{ username }, { email }] )
+        const exists = await User.exists( { $or: [{ username }, { email }] } )
         
         유용하게 사용 될 경우가 많아 보이니 익혀두자.
 
@@ -72,13 +72,13 @@ Schema에 unique: true를 넣어서 db에 중복된 값이 들어가지 않게�
         >> C c로 서버 닫으면 다 날아감
     
 
-    login 할 때, 
+    login 할 때, 컨트롤러에서
         req.session.loggedIn = true;
         req.session.user = ~~~;
-    걸어줄 수 있음.
+    위와 같이 걸어줄 수 있음.
 
 
-6. local
+6.  res.local
 
     express 와 pug 는 같은 local을 공유 
         ( pug를 express의 view engine으로 설정 했기때문)
