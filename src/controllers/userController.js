@@ -30,7 +30,7 @@ export const postJoin = async (req, res) => {
     return res.redirect("/login");
   } catch (error) {
     return res.status(400).render("join", {
-      pageTitle: "Upload Video",
+      pageTitle: "Join",
       errorMessage: error._message,
     });
   }
