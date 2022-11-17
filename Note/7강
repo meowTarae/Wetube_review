@@ -1,3 +1,7 @@
+#7.12 ~ #7.23 까지 내용들은 굿노트에 정리해 둠.
+
+
+
 import { compare } from "bcrypt"
 
 Schema에 unique: true를 넣어서 db에 중복된 값이 들어가지 않게끔
