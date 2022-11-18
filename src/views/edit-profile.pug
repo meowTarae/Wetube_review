@@ -1,6 +1,8 @@
 extends base
 
 block content
+  //- if errorMessage
+  //-   span= errorMessage
   form(method="POST")
     input(
       placeholder="Name",
@@ -27,7 +29,6 @@ block content
       placeholder="Location",
       name="location",
       type="text",
-      required,
       value=loggedInUser.location
     )
     if errorMessage

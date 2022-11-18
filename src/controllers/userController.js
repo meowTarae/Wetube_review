@@ -38,7 +38,6 @@ export const postJoin = async (req, res) => {
 
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
-
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
   const pageTitle = "Login";
@@ -60,6 +59,7 @@ export const postLogin = async (req, res) => {
   req.session.user = user;
   return res.redirect("/");
 };
+
 export const startGithubLogin = (req, res) => {
   const baseUrl = "https://github.com/login/oauth/authorize";
   const config = {
@@ -131,31 +131,40 @@ export const finishGithubLogin = async (req, res) => {
     return res.redirect("/login");
   }
 };
+
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
 };
+
 export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
 export const postEdit = async (req, res) => {
   const {
     session: {
-      user: { _id },
+      user: { _id, email: sessionEmail, username: sessionUsername },
     },
     body: { name, email, username, location },
   } = req;
 
-  const exists = await User.exists({
-    $or: [{ name }, { email }, { username }, { location }],
-  });
-
-  if (exists) {
-    res.render("edit-profile", {
-      pageTitle: "Edit Profile",
-      errorMessage: "중복",
-    });
+  let duplicates = [];
+  if (sessionUsername !== username) {
+    duplicates.push({ username });
+  } else if (sessionEmail !== email) {
+    duplicates.push({ email });
   }
+
+  if (duplicates?.length) {
+    const exists = await User.findOne({ $or: duplicates });
+    if (exists && exists._id.toString() !== _id) {
+      return res.render("edit-profile", {
+        pageTitle: "Edit Profile",
+        errorMessage: "Duplicate value exists",
+      });
+    }
+  }
+
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
