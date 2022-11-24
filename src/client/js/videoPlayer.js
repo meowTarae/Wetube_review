@@ -75,7 +75,7 @@ const handleTimelineChange = (event) => {
 const handleTimelineChanged = (event) => {
   if (video.paused && finish) {
     video.play();
-    playBtn.innerText = "Pause";
+    playBtnIcon.classList = "fas fa-pause";
     finish = false;
   }
 };
