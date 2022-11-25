@@ -115,6 +115,12 @@ const handleUserKeydown = (event) => {
   if (code === "Space") handlePlayClick();
 };
 
+const handleEnded = () => {
+  const { id } = videoContainer.dataset;
+  fetch(`/api/videos/${id}/view`, {
+    method: "POST",
+  });
+};
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
@@ -127,6 +133,7 @@ videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 video.addEventListener("click", handleVideoClick);
 window.addEventListener("keydown", handleUserKeydown);
+video.addEventListener("ended", handleEnded);
 
 /* video.duration 안보일때 */
 if (video.readyState >= 2) {
