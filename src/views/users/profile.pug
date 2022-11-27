@@ -4,7 +4,7 @@ include ../mixins/video
 block content
   .profile__data
     if loggedInUser.socialOnly
-      img.avatar(src=user.avatarUrl) 
+      img.avatar(src=user.avatarUrl, crossorigin="anonymous") 
     else
       if !user.avatarUrl
         span 😀
