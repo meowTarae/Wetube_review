@@ -113,6 +113,7 @@ const handleVideoClick = () => handlePlayClick();
 const handleUserKeydown = (event) => {
   const { code } = event;
   if (code === "Space") handlePlayClick();
+  if (code === "KeyF") handleFullscreen();
 };
 
 const handleEnded = () => {
