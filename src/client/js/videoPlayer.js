@@ -111,6 +111,7 @@ const handleMouseLeave = () => {
 const handleVideoClick = () => handlePlayClick();
 
 const handleUserKeydown = (event) => {
+  if (event.target.id === "commentArea") return;
   const { code } = event;
   if (code === "Space") handlePlayClick();
   if (code === "KeyF") handleFullscreen();
@@ -122,6 +123,7 @@ const handleEnded = () => {
     method: "POST",
   });
 };
+
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
@@ -132,8 +134,8 @@ timeline.addEventListener("change", handleTimelineChanged);
 fullScreenBtn.addEventListener("click", handleFullscreen);
 videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
-video.addEventListener("click", handleVideoClick);
 window.addEventListener("keydown", handleUserKeydown);
+video.addEventListener("click", handleVideoClick);
 video.addEventListener("ended", handleEnded);
 
 /* video.duration 안보일때 */
