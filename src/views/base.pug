@@ -1,3 +1,6 @@
+include mixins/message
+
+doctype html
 html(lang="ko")
   head
     title #{ pageTitle } | #{ siteName }
@@ -7,6 +10,12 @@ html(lang="ko")
     )
     link(rel="stylesheet", href="/static/css/styles.css")
   body
+    if messages.error
+      +message("error", messages.error)
+    if messages.info
+      +message("info", messages.info)
+    if messages.success
+      +message("success", messages.success)
     include partials/header
     main
       block content
@@ -14,9 +23,3 @@ html(lang="ko")
 
   script(src="/static/js/main.js")
   block scripts
-
-  //- 아이콘이 안나오는 경우, 아래 코드를 사용하자
-  //- script(
-  //-   src="https://kit.fontawesome.com/cd93d6076f.js",
-  //-   crossorigin="anonymous"
-  //- )
