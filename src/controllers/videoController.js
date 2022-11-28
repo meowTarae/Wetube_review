@@ -5,6 +5,8 @@ export const home = async (req, res) => {
   const videos = await Video.find({})
     .sort({ createdAt: "desc" })
     .populate("owner");
+
+  console.log(videos);
   return res.render("home", { pageTitle: "Home", videos });
 };
 
@@ -64,7 +66,8 @@ export const postUpload = async (req, res) => {
       title,
       description,
       fileUrl: video[0].path,
-      thumbUrl: thumb[0].path.replace(/[\\]/g, "/"),
+      // thumbUrl: thumb[0].path.replace(/[\\]/g, "/"),
+      thumbUrl: `/${thumb[0].destination}${thumb[0].filename}`,
       owner: _id,
       hashtags: Video.formatHashtags(hashtags),
     });
