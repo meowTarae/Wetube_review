@@ -96,6 +96,8 @@ export const deleteVideo = async (req, res) => {
   if (String(video.owner) !== String(_id)) {
     return res.status(403).redirect("/");
   }
+
+  await Comment.deleteMany({ video: id });
   await Video.findByIdAndDelete(id);
   return res.redirect("/");
 };
@@ -140,4 +142,32 @@ export const createComment = async (req, res) => {
   video.comments.push(comment._id);
   await video.save();
   return res.status(201).json({ newCommentId: comment._id });
+};
+
+export const deleteComment = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: { id },
+  } = req;
+  // id: 지우려는 comment의 id
+  // _id: 현재 로그인 중인 유저의 id
+  const comment = await Comment.findById(id);
+  const video = await Video.findById(comment.video.toString());
+  // 지우려는 comment가 작성된 video를 가져옴.
+  if (!video) {
+    return res.status(404).render("404", { pageTitle: "Video not found." });
+  }
+  const commentOwner = comment.owner.toString();
+  if (commentOwner !== _id || commentOwner !== video.owner.toString())
+    return res.sendStatus(403);
+  // 1. 로그인 중인 유저가 댓글을 지우려 함 => 유저 id랑 코멘트 owner 비교
+  //      => comment.owner.toString() !== loggedInUserId
+  // 2. 비디오 주인이 댓글을 지우려 함
+  //      => comment.owner.toString() !== video.owner.toString()
+  await Comment.findByIdAndDelete(id);
+  video.comments.splice(video.comments.indexOf(video._id), 1);
+  video.save();
+  return res.sendStatus(200);
 };

@@ -113,10 +113,9 @@ const handleVideoClick = () => handlePlayClick();
 const handleUserKeydown = (event) => {
   if (event.target.id === "commentArea") return;
 
-  const { code, target } = event;
-
+  const { code } = event;
   if (code === "Space") {
-    if (target == document.body) event.preventDefault();
+    event.preventDefault();
     handlePlayClick();
   }
   if (code === "KeyF") handleFullscreen();
