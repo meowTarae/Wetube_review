@@ -4,12 +4,22 @@ include ../mixins/video
 block content
   .profile__data
     if loggedInUser.socialOnly
-      img.avatar(src=user.avatarUrl, crossorigin="anonymous") 
+      if loggedInUser.avatarUrl.includes("github")
+        img.avatar(src=user.avatarUrl, crossorigin="anonymous") 
+      else
+        img.avatar(src="/" + user.avatarUrl)
     else
       if !user.avatarUrl
         span 😀
       else
-        img.avatar(src="/" + user.avatarUrl)
+        if loggedInUser.avatarUrl.includes("github")
+          img.header__avatar(
+            src=loggedInUser.avatarUrl,
+            crossorigin="anonymous"
+          )
+        else
+          img.header__avatar(src="/" + loggedInUser.avatarUrl)
+
     h3= user.name
   .video-grid
     each video in user.videos
